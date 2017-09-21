@@ -16,7 +16,10 @@ export class AppComponent {
 
     private gridOptions:GridOptions = <GridOptions>{
         rowSelection: 'multiple',
-        suppressRowClickSelection: true
+        suppressRowClickSelection: true,
+        enableFilter: true,
+        enableSorting: true,
+        animateRows: true
     };
     public rowData:any[];
     private columnDefs:any[];
@@ -42,11 +45,13 @@ export class AppComponent {
                 editable: true, 
                 cellEditorFramework: AgGridMaterialTextEditorComponent 
             },
-            {headerName: "Price", field: "price"},
+            {headerName: "Price", field: "price", type: 'numericColumn'},
+                
             {
                 headerName: "Made on", 
                 field: "madeOn", 
                 editable: true, 
+                type: 'numericColumn',
                 cellEditorFramework: AgGridMaterialDatepickerEditorComponent,
                 valueFormatter: (data) => moment(data.value).format('L')
             },
